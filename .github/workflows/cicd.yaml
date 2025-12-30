@@ -2,8 +2,8 @@ name: CI/CD for npm package
 
 on:
   push:
-    branches:
-      - main
+    tags: 
+      - '*.*.*'
 
 jobs:
   build-and-publish:
@@ -23,6 +23,8 @@ jobs:
         run: |
           cd ui-library-package
           npm install
+          npm run build
+          npm whoami
 
       - name: Publish to npm
         run: |
