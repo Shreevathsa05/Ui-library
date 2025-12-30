@@ -19,7 +19,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
-        run: cd ui-library-package && npm ci
+        run: cd ui-library-package && npm i
 
       - name: Run tests
         run: npm test --if-present
