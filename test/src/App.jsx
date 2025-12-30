@@ -1,7 +1,6 @@
 import './index.css'
 import React from 'react'
-
-function BasicButton() {
+function TestingRig() {
   return (
     <div className='bg-gray-700 min-h-screen min-w-screen'>
       hi
@@ -9,4 +8,4 @@ function BasicButton() {
   )
 }
 
-export default BasicButton
+export default TestingRig
