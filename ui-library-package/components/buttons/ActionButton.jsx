@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function BasicButton({
+export function ActionButton({
   children,
   onAction,
   onError,
@@ -10,14 +10,14 @@ export function BasicButton({
 }) {
   const [loading, setLoading] = useState(false);
 
-  async function handleClick(e) {
+  async function handleClick() {
     if (!onAction || loading || disabled) return;
 
     try {
       setLoading(true);
       await onAction();
     } catch (err) {
-      console.error("Button action failed:", err);
+      console.error(err);
       onError && onError(err);
     } finally {
       setLoading(false);
