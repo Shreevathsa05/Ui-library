@@ -1,11 +1,13 @@
-import './index.css'
 import React from 'react'
-function TestingRig() {
+import { BrowserRouter } from "react-router";
+import Test from "./Test"
+
+function App() {
   return (
-    <div className='bg-gray-700 min-h-screen min-w-screen'>
-      hi
-    </div>
+    <BrowserRouter>
+      <Test/>
+    </BrowserRouter>
   )
 }
 
-export default TestingRig
+export default App
