@@ -21,3 +21,8 @@ export { CardSkeleton } from './components/loading/CardSkeleton';
 export { ListSkeleton } from './components/loading/ListSkeleton';
 export { ProfileSkeleton } from './components/loading/ProfileSkeleton';
 export { TableSkeleton } from './components/loading/TableSkeleton';
+
+// Footer
+export { DynamicFooter } from './components/footer/DynamicFooter';
+export { SimpleFooter } from './components/footer/SimpleFooter';
+export { NewsletterFooter } from './components/footer/NewsletterFooter';
