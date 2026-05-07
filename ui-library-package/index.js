@@ -37,3 +37,13 @@ export { ConfirmationModal } from './components/modals/ConfirmationModal';
 
 // Dynamic Island
 export { DynamicIsland, useDynamicIsland } from './components/dynamic-island/DynamicIsland';
+
+// Auth
+export { AuthForm } from './components/auth/AuthForm';
+
+// Documents
+export { FileCard } from './components/documents/FileCard';
+export { FileList } from './components/documents/FileList';
+export { FileUpload } from './components/documents/FileUpload';
+export { FileTypeBadge } from './components/documents/FileTypeBadge';
+export { getFileType, formatBytes, formatDate } from './components/documents/fileUtils';
