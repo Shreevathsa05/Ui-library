@@ -3,24 +3,30 @@ import { Skeleton } from './Skeleton';
 
 export const ProfileSkeleton = ({ className = '' }) => {
   return (
-    <div className={`flex flex-col items-center p-6 border border-gray-300 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-white w-[340px] text-center ${className}`}>
-      <Skeleton className="w-24 h-24 rounded-full mb-4 shadow-sm" />
-      <Skeleton className="h-6 w-1/2 rounded mb-2" />
-      <Skeleton className="h-4 w-1/3 rounded mb-6" />
-      
-      <div className="flex gap-4 w-full justify-center mb-6">
-        <div className="flex flex-col items-center gap-1 w-20">
-          <Skeleton className="h-5 w-10 rounded" />
-          <Skeleton className="h-3 w-16 rounded" />
+    <div style={{ width: '340px', border: '1px solid #d1d5db', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.08)', backgroundColor: '#fff', overflow: 'hidden', flexShrink: 0, padding: '28px 24px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }} className={className}>
+      {/* Avatar */}
+      <Skeleton style={{ width: '80px', height: '80px', borderRadius: '50%', marginBottom: '16px' }} />
+
+      {/* Name */}
+      <Skeleton style={{ height: '16px', width: '140px', borderRadius: '4px', marginBottom: '8px' }} />
+      {/* Role/subtitle */}
+      <Skeleton style={{ height: '12px', width: '100px', borderRadius: '4px', marginBottom: '24px' }} />
+
+      {/* Stats row */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0', marginBottom: '24px', width: '100%', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100px' }}>
+          <Skeleton style={{ height: '18px', width: '48px', borderRadius: '4px' }} />
+          <Skeleton style={{ height: '11px', width: '64px', borderRadius: '4px' }} />
         </div>
-        <div className="w-px h-10 bg-gray-200" />
-        <div className="flex flex-col items-center gap-1 w-20">
-          <Skeleton className="h-5 w-10 rounded" />
-          <Skeleton className="h-3 w-16 rounded" />
+        <div style={{ width: '1px', height: '36px', backgroundColor: '#e5e7eb', margin: '0 8px' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', width: '100px' }}>
+          <Skeleton style={{ height: '18px', width: '48px', borderRadius: '4px' }} />
+          <Skeleton style={{ height: '11px', width: '64px', borderRadius: '4px' }} />
         </div>
       </div>
-      
-      <Skeleton className="h-10 w-full rounded-md" />
+
+      {/* CTA Button */}
+      <Skeleton style={{ height: '38px', width: '100%', borderRadius: '8px' }} />
     </div>
   );
 };

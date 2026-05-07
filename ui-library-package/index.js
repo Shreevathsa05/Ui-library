@@ -26,3 +26,11 @@ export { TableSkeleton } from './components/loading/TableSkeleton';
 export { DynamicFooter } from './components/footer/DynamicFooter';
 export { SimpleFooter } from './components/footer/SimpleFooter';
 export { NewsletterFooter } from './components/footer/NewsletterFooter';
+
+// Modals
+export { CenteredModal } from './components/modals/CenteredModal';
+export { CardModal } from './components/modals/CardModal';
+export { DeleteModal } from './components/modals/DeleteModal';
+export { BadgeSuccessModal } from './components/modals/BadgeSuccessModal';
+export { SuccessModal } from './components/modals/SuccessModal';
+export { ConfirmationModal } from './components/modals/ConfirmationModal';

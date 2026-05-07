@@ -3,26 +3,30 @@ import { Skeleton } from './Skeleton';
 
 export const ListSkeleton = ({ className = '', items = 3 }) => {
   return (
-    <div className={`flex flex-col border border-gray-300 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-white w-[340px] overflow-hidden ${className}`}>
+    <div style={{ width: '340px', border: '1px solid #d1d5db', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.08)', backgroundColor: '#fff', overflow: 'hidden', flexShrink: 0 }} className={className}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-200 bg-gray-50">
-        <Skeleton className="h-5 w-1/3 rounded" />
+      <div style={{ padding: '12px 16px', borderBottom: '1px solid #e5e7eb', backgroundColor: '#f9fafb' }}>
+        <Skeleton style={{ height: '14px', width: '100px', borderRadius: '4px' }} />
       </div>
+
       {/* List Items */}
-      <div className="flex flex-col bg-white">
-        {Array.from({ length: items }).map((_, i) => (
-          <div 
-            key={i} 
-            className={`flex items-center gap-4 p-4 ${i !== items - 1 ? 'border-b border-gray-100' : ''}`}
-          >
-            <Skeleton className="w-10 h-10 rounded-full shrink-0" />
-            <div className="flex flex-col gap-2 w-full">
-              <Skeleton className="h-3.5 w-5/6 rounded" />
-              <Skeleton className="h-3 w-3/5 rounded" />
-            </div>
+      {Array.from({ length: items }).map((_, i) => (
+        <div
+          key={i}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '12px',
+            padding: '12px 16px',
+            borderBottom: i !== items - 1 ? '1px solid #f3f4f6' : 'none',
+            backgroundColor: '#fff',
+          }}
+        >
+          <Skeleton style={{ width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <Skeleton style={{ height: '13px', width: '180px', borderRadius: '4px' }} />
+            <Skeleton style={{ height: '11px', width: '120px', borderRadius: '4px' }} />
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };

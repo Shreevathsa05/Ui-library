@@ -3,28 +3,33 @@ import { Skeleton } from './Skeleton';
 
 export const CardSkeleton = ({ className = '' }) => {
   return (
-    <div className={`flex flex-col border border-gray-300 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] bg-white w-[340px] overflow-hidden ${className}`}>
-      {/* Image Placeholder */}
-      <Skeleton className="h-48 w-full" />
-      {/* Content Area */}
-      <div className="flex flex-col gap-4 p-5 bg-white">
-        <div className="flex items-center gap-4">
-          <Skeleton className="w-12 h-12 rounded-full shrink-0" />
-          <div className="flex flex-col gap-2 w-full">
-            <Skeleton className="h-4 w-3/4 rounded" />
-            <Skeleton className="h-3 w-1/2 rounded" />
+    <div style={{ width: '340px', border: '1px solid #d1d5db', borderRadius: '12px', boxShadow: '0 8px 30px rgba(0,0,0,0.08)', backgroundColor: '#fff', overflow: 'hidden', flexShrink: 0 }} className={className}>
+      {/* Image placeholder */}
+      <Skeleton style={{ height: '180px', width: '100%', borderRadius: 0 }} />
+
+      {/* Content area */}
+      <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', backgroundColor: '#fff' }}>
+        {/* Avatar + name row */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <Skeleton style={{ width: '40px', height: '40px', borderRadius: '50%', flexShrink: 0 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', flex: 1 }}>
+            <Skeleton style={{ height: '13px', width: '160px', borderRadius: '4px' }} />
+            <Skeleton style={{ height: '11px', width: '100px', borderRadius: '4px' }} />
           </div>
         </div>
-        <div className="flex flex-col gap-2 mt-2">
-          <Skeleton className="h-3 w-full rounded" />
-          <Skeleton className="h-3 w-full rounded" />
-          <Skeleton className="h-3 w-4/5 rounded" />
+
+        {/* Body text lines */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <Skeleton style={{ height: '11px', width: '100%', borderRadius: '4px' }} />
+          <Skeleton style={{ height: '11px', width: '100%', borderRadius: '4px' }} />
+          <Skeleton style={{ height: '11px', width: '220px', borderRadius: '4px' }} />
         </div>
       </div>
-      {/* Footer Area */}
-      <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-between items-center">
-        <Skeleton className="h-8 w-20 rounded-md" />
-        <Skeleton className="h-8 w-24 rounded-md" />
+
+      {/* Footer area */}
+      <div style={{ padding: '12px 16px', borderTop: '1px solid #e5e7eb', backgroundColor: '#f9fafb', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Skeleton style={{ height: '32px', width: '80px', borderRadius: '6px' }} />
+        <Skeleton style={{ height: '32px', width: '96px', borderRadius: '6px' }} />
       </div>
     </div>
   );
