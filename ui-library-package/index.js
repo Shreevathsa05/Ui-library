@@ -34,3 +34,6 @@ export { DeleteModal } from './components/modals/DeleteModal';
 export { BadgeSuccessModal } from './components/modals/BadgeSuccessModal';
 export { SuccessModal } from './components/modals/SuccessModal';
 export { ConfirmationModal } from './components/modals/ConfirmationModal';
+
+// Dynamic Island
+export { DynamicIsland, useDynamicIsland } from './components/dynamic-island/DynamicIsland';
