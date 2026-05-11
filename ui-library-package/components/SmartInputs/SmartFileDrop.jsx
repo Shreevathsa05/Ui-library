@@ -1,54 +1,50 @@
 import React, { useState, useRef } from 'react';
 
 export default function SmartFileDrop({
-  multiple = false,
-  onChange,
-  containerClassName = "",
-  title = "Upload Files",
-  subtitle,
-  actionText = "Browse Files",
-  icon,
+    multiple = false,
+    onChange,
+    containerClassName = "",
 }) {
-  const [isDragging, setIsDragging] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const fileInputRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const fileInputRef = useRef(null);
 
-  const handleDragOver = (e) => {
-    e.preventDefault();
-    setIsDragging(true);
-  };
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        setIsDragging(true);
+    };
 
-  const handleDragLeave = () => {
-    setIsDragging(false);
-  };
+    const handleDragLeave = () => {
+        setIsDragging(false);
+    };
 
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    
-    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      if (onChange) {
-        onChange(multiple ? Array.from(e.dataTransfer.files) : [e.dataTransfer.files[0]]);
-      }
-    }
-  };
+    const handleDrop = (e) => {
+        e.preventDefault();
+        setIsDragging(false);
 
-  const handleClick = () => {
-    fileInputRef.current.click();
-  };
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            if (onChange) {
+                onChange(multiple ? Array.from(e.dataTransfer.files) : [e.dataTransfer.files[0]]);
+            }
+        }
+    };
 
-  const handleFileChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      if (onChange) {
-        onChange(multiple ? Array.from(e.target.files) : [e.target.files[0]]);
-      }
-    }
-  };
+    const handleClick = () => {
+        fileInputRef.current.click();
+    };
 
-  return (
-    <>
-      <style>
-        {`
+    const handleFileChange = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            if (onChange) {
+                onChange(multiple ? Array.from(e.target.files) : [e.target.files[0]]);
+            }
+        }
+    };
+
+    return (
+        <>
+            <style>
+                {`
           .smart-file-drop-container {
             width: 100%;
             padding: 16px;
@@ -208,54 +204,52 @@ export default function SmartFileDrop({
             animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
           }
         `}
-      </style>
-      
-      <div className={`smart-file-drop-container ${containerClassName}`}>
-        <div 
-          className={`smart-file-drop-zone ${isDragging ? 'dragging' : ''}`}
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-          onClick={handleClick}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            style={{ display: 'none' }} 
-            multiple={multiple}
-            onChange={handleFileChange}
-          />
-          
-          <div className="icon-wrapper">
-            {icon || (
-              <svg 
-                className="upload-icon" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24" 
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth={2} 
-                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" 
-                />
-              </svg>
-            )}
-          </div>
-          
-          <h2 className="smart-file-drop-title">{title}</h2>
-          <p className="smart-file-drop-subtitle">
-            {subtitle || `Drag and Drop file${multiple ? 's' : ''} here`}
-          </p>
-          <span className="smart-file-drop-action">
-            {actionText}
-          </span>
-        </div>
-      </div>
-    </>
-  );
+            </style>
+
+            <div className={`smart-file-drop-container ${containerClassName}`}>
+                <div
+                    className={`smart-file-drop-zone ${isDragging ? 'dragging' : ''}`}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
+                    onClick={handleClick}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        multiple={multiple}
+                        onChange={handleFileChange}
+                    />
+
+                    <div className="icon-wrapper">
+                        <svg
+                            className="upload-icon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                            />
+                        </svg>
+                    </div>
+
+                    <h2 className="smart-file-drop-title">Upload Files</h2>
+                    <p className="smart-file-drop-subtitle">
+                        Drag and Drop file{multiple ? 's' : ''} here
+                    </p>
+                    <span className="smart-file-drop-action">
+                        Browse Files
+                    </span>
+                </div>
+            </div>
+        </>
+    );
 }
