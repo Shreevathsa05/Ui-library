@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-
+import { useState } from "react";
 import { BasicButton , ActionButton , ConfirmButton , LinkButton , SubmitButton , BasicCarousel } from "ui-library-spj";
 // import {BasicButton} from './components/buttons/BasicButton'
 // import {ActionButton} from './components/buttons/ActionButton'
@@ -10,8 +10,21 @@ import { BasicButton , ActionButton , ConfirmButton , LinkButton , SubmitButton 
 // import {BasicCarousel} from './components/carousel/BasicCarousel'
 
 import "./index.css";
+import SmartInput from "../../ui-library-package/components/SmartInputs/SmartInput";
+import SmartFileDrop from "../../ui-library-package/components/SmartInputs/SmartFileDrop";
 
 export default function App() {
+
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const [resume, setResume] =
+  useState(null);
+
+const [images, setImages] =
+  useState([]);
   const navigate = useNavigate();
 
   const carouselItems = [
@@ -25,7 +38,25 @@ export default function App() {
       Slide Three
     </div>,
   ];
+  const [bio, setBio] =
+  useState("");
 
+
+
+const [role, setRole] =
+  useState("frontend");
+
+const [accepted, setAccepted] =
+  useState(false);
+
+const [gender, setGender] =
+  useState("male");
+
+const [file, setFile] =
+  useState(null);
+
+const [date, setDate] =
+  useState("");
   return (
     <div className="max-w-5xl mx-auto p-10 space-y-16">
       {/* Page Header */}
@@ -190,6 +221,225 @@ export default function App() {
           className="rounded-2xl"
           slideClassName="shadow-2xl"
         />
+      </section>
+      <section className="py-10">
+  <div className="max-w-md mx-auto p-6 space-y-5 bg-white rounded-3xl shadow-lg">
+
+    {/* Email */}
+    <SmartInput
+      label="Email"
+      placeholder="Enter email"
+      value={email}
+      onChange={setEmail}
+      validation="email"
+      required
+    />
+
+    {/* Phone */}
+    <SmartInput
+      label="Phone"
+      placeholder="Enter phone"
+      value={phone}
+      onChange={setPhone}
+      validation="phone"
+    />
+
+    {/* Password */}
+    <SmartInput
+      label="Password"
+      type="password"
+      placeholder="Enter password"
+      value={password}
+      onChange={setPassword}
+      validation="password"
+    />
+
+    {/* Regex Username */}
+    <SmartInput
+      label="Username"
+      placeholder="Only lowercase letters"
+      value={username}
+      onChange={setUsername}
+      validation="regex"
+      regex={/^[a-z]+$/}
+    />
+
+    {/* Textarea */}
+    <SmartInput
+      type="textarea"
+      label="Bio"
+      placeholder="Write about yourself..."
+      value={bio}
+      onChange={setBio}
+      rows={4}
+    />
+
+    {/* Select */}
+    <SmartInput
+      type="select"
+      label="Role"
+      value={role}
+      onChange={setRole}
+      options={[
+        {
+          label: "Frontend Developer",
+          value: "frontend",
+        },
+        {
+          label: "Backend Developer",
+          value: "backend",
+        },
+        {
+          label: "Full Stack Developer",
+          value: "fullstack",
+        },
+      ]}
+    />
+
+    {/* Checkbox */}
+    <SmartInput
+      type="checkbox"
+      placeholder="Accept Terms & Conditions"
+      checked={accepted}
+      onChange={setAccepted}
+    />
+
+    {/* Radio */}
+    <div className="space-y-3">
+      <p className="font-medium">
+        Gender
+      </p>
+
+      <SmartInput
+        type="radio"
+        placeholder="Male"
+        checked={gender === "male"}
+        radioValue="male"
+        onChange={setGender}
+      />
+
+      <SmartInput
+        type="radio"
+        placeholder="Female"
+        checked={gender === "female"}
+        radioValue="female"
+        onChange={setGender}
+      />
+    </div>
+
+    {/* File Upload */}
+    <SmartInput
+      type="file"
+      label="Upload Resume"
+      onChange={setFile}
+    />
+
+    {/* Date */}
+    <SmartInput
+      type="date"
+      label="Date of Birth"
+      value={date}
+      onChange={setDate}
+    />
+
+    {/* Submit */}
+    <SmartInput
+      type="submit"
+      buttonText="Create Account"
+      inputClassName="
+        w-full
+        bg-black
+        hover:bg-zinc-800
+      "
+    />
+
+  </div>
+</section>
+      <section className="p-8 space-y-8 bg-zinc-50 rounded-2xl mt-8">
+        <h2 className="text-2xl font-bold">Smart File Drop Tests</h2>
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Single File Upload</h3>
+          <SmartFileDrop
+            onChange={setResume}
+          />
+          {resume && <p className="mt-2 text-sm text-green-600">Selected file: {resume[0]?.name}</p>}
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Multiple File Upload</h3>
+          <SmartFileDrop
+            onChange={setImages}
+            multiple={true}
+          />
+          {images && images.length > 0 && (
+            <p className="mt-2 text-sm text-green-600">
+              Selected files: {images.map(f => f.name).join(', ')}
+            </p>
+          )}
+        </div>
+
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Fully Customized Upload</h3>
+          <SmartFileDrop
+            onChange={setResume}
+            multiple={true}
+            title="Upload Portfolio Assets"
+            subtitle="Drop your high-res videos, images, or PDFs here"
+            actionText="Select Assets"
+            containerClassName="!bg-zinc-900 !rounded-3xl"
+            icon={
+              <svg 
+                className="upload-icon !text-zinc-400" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" 
+                />
+              </svg>
+            }
+          />
+          <style>{`
+            /* Overriding internal styles just for this instance */
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-zone {
+              background-color: #18181b;
+              border-color: #3f3f46;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-title {
+              color: #f4f4f5;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-subtitle {
+              color: #a1a1aa;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-action {
+              background: #27272a;
+              color: #f4f4f5;
+              border-color: #3f3f46;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-zone:hover {
+              border-color: #f4f4f5;
+              background-color: #27272a;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-zone:hover .smart-file-drop-action {
+              background: #f4f4f5;
+              color: #18181b;
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-zone.dragging {
+              border-color: #10b981;
+              background-color: #064e3b;
+              box-shadow: inset 0 0 20px rgba(16, 185, 129, 0.2);
+            }
+            .smart-file-drop-container.\\!bg-zinc-900 .smart-file-drop-zone.dragging .upload-icon {
+              color: #34d399;
+            }
+          `}</style>
+        </div>
       </section>
     </div>
   );
